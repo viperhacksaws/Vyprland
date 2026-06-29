@@ -6,17 +6,26 @@ hl.env("XCURSOR_SIZE", "24")
 
 -- Settings
 hl.config({
+    animations = {
+        enabled = true,
+    },
     decoration = {
         blur = {
             enabled = false,
             passes = 5,
+            size = 5,
         },
-        inactive_opacity = 0.8,
-        rounding = 5,
+        dim_inactive = false,
+        dim_special = 0.35,
+        inactive_opacity = 0.85,
+        rounding = 7,
         rounding_power = 2.0,
         shadow = {
             enabled = false,
         },
+    },
+    ecosystem = {
+        enforce_permissions = false,
     },
     general = {
         border_size = 2,
@@ -37,6 +46,17 @@ hl.config({
     },
 })
 
+-- Bezier curves
+hl.curve("crazyshot", { type = "bezier", points = { {0.1, 1.5}, {0.76, 0.92} } })
+
+-- Animations
+hl.animation({
+    leaf = "global",
+    enabled = true,
+    speed = 8.0,
+    bezier = "crazyshot",
+})
+
 -- Keybinds
 hl.unbind("SUPER + K")
 hl.bind("SUPER + K", hl.dsp.exec_cmd("kate"))
@@ -44,3 +64,5 @@ hl.unbind("SUPER + SHIFT + V")
 hl.bind("SUPER + SHIFT + V", hl.dsp.exec_cmd("exec ~/.config/ml4w/scripts/ml4w-cliphist"))
 hl.unbind("SUPER + V")
 hl.bind("SUPER + V", hl.dsp.exec_cmd("vesktop"))
+hl.unbind("SUPER + SHIFT + K")
+hl.bind("SUPER + SHIFT + K", hl.dsp.exec_cmd("krita"))
