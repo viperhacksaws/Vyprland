@@ -1,4 +1,4 @@
-eos-update --needed --noprogressbar
+eos-update
 yay -S figlet --noconfirm --needed --noprogressbar
 
 figlet -f smslant "viperhacksaws"
