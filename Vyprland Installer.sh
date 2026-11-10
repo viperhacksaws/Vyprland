@@ -11,15 +11,15 @@ PACMAN_FULL="kate obsidian obs-studio libreoffice-fresh celluloid kitty fastfetc
 
 # main menu
 
-echo "\e[33m~~~~~~~~~ Welcome to the Vyprland installer! ~~~~~~~~~\e[0m"
+echo -e "\e[33m~~~~~~~~~ Welcome to the Vyprland installer! ~~~~~~~~~\e[0m"
 echo ""
 echo "This script will install the ML4W hyprland dotfiles, with my personal
 configs and apps."
 echo "Please select your preferred install below."
 echo ""
-echo "\e[34m1) Base install, only essential apps (Librewolf, Libreoffice suite, etc.)\e[0m"
-echo "\e[34m2) Full install with all of my apps (Proton Mail + VPN, art tools, etc.)\e[0m"
-echo "\e[31m3) Exit\e[0m
+echo -e "\e[34m1) Base install, only essential apps (Librewolf, Libreoffice suite, etc.)\e[0m"
+echo -e "\e[34m2) Full install with all of my apps (Proton Mail + VPN, art tools, etc.)\e[0m"
+echo -e "\e[31m3) Exit\e[0m
 "
 read -rp "Select [1-3]: " choice
 
@@ -46,21 +46,21 @@ esac
 
 clear
 if [  $INSTALL = "BASE"  ]; then
-    echo "\e[32m~~~~~~~~~ BASE INSTALL ~~~~~~~~~\e[0m";
+    echo -e "\e[32m~~~~~~~~~ BASE INSTALL ~~~~~~~~~\e[0m";
 else
-    echo "\e[32m~~~~~~~~~ FULL INSTALL ~~~~~~~~~\e[0m";
+    echo -e "\e[32m~~~~~~~~~ FULL INSTALL ~~~~~~~~~\e[0m";
 fi
 
 echo ""
-echo "\e[31mWARNING:\e[0m The installer will overwrite any existing dotfiles you have. If you
+echo -e "\e[31mWARNING:\e[0m The installer will overwrite any existing dotfiles you have. If you
 have anything that you dont want overwritten, please back up those files
 before installing"
 echo ""
 echo "Continue the installation?"
 echo ""
 sleep 3
-echo "\e[32m1) Yes\e[0m"
-echo "\e[31m2) Nevermind...\e[0m
+echo -e "\e[32m1) Yes\e[0m"
+echo -e "\e[31m2) Nevermind...\e[0m
 "
 read -rp "Select [1-2]: " choice
 
@@ -80,10 +80,10 @@ esac
 # do the thing
 
 clear
-echo "\e[33mInstalling Updates...\e[0m"
+echo -e "\e[33mInstalling Updates...\e[0m"
 eos-update
 
-echo "\e[33mInstalling AUR packages...\e[0m"
+echo -e "\e[33mInstalling AUR packages...\e[0m"
 if [ $INSTALL="BASE" ]; then
 yay -S --noconfirm --needed \
     $YAY_BASE
@@ -92,7 +92,7 @@ yay -S --noconfirm --needed \
     $YAY_FULL
 fi
 
-echo "\e[33mInstalling pacman packages...\e[0m"
+echo -e "\e[33mInstalling pacman packages...\e[0m"
 if [ $INSTALL="BASE" ] then
 sudo pacman -S --noconfirm --needed \
     $PACMAN_BASE
@@ -101,16 +101,16 @@ sudo pacman -S --noconfirm --needed \
     $PACMAN_FULL
 fi
 
-echo "\e[33mInstalling the ML4W dotfiles...\e[0m"
+echo -e "\e[33mInstalling the ML4W dotfiles...\e[0m"
 curl -s https://ml4w.com/os/rolling
 
-echo "\e[33mRemoving extra packages...\e[0m"
+echo -e "\e[33mRemoving extra packages...\e[0m"
 sudo pacman -R firefox htop nautilus nwg-dock-hyprland --noconfirm --needed --noprogressbar
 
-echo "\e[33mDownloading assets and config files...\e[0m"
+echo -e "\e[33mDownloading assets and config files...\e[0m"
 git clone https://github.com/viperhacksaws/Vyprland.git
 
-echo "\e[33mDeploying configs...\e[0m"
+echo -e "\e[33mDeploying configs...\e[0m"
 mv ~/OSX%20Snow%20Leopard%20Wallpaper.jpg ~/OSX\ Snow\ Leopard.jpg
 mv ~/OSX\ Snow\ Leopard.jpg ~/.config/ml4w/wallpapers/OSX\ Snow\ Leopard.jpg
 mv ~/dogicon.png ~/.config/ml4w/assets/dogicon.png
@@ -120,7 +120,7 @@ mv ~/meta.json ~/.config/hypr/hyprmod/profiles/5e59155607ab/meta.json
 mv ~/hyprland-gui.lua ~/.config/hypr/hyprmod/profiles/5e59155607ab/hyprland-gui.lua
 touch ~/.config/hypr/hyprmod/active_profile
 
-echo "\e[33mSetting app defaults...\e[0m"
+echo -e "\e[33mSetting app defaults...\e[0m"
 echo "5e59155607ab" > ~/.config/hypr/hyprmod/active_profile
 sed -i 's/firefox/librewolf/g' ~/.config/ml4w/settings/browser.sh
 sed -i 's/nautilus/nemo/g' ~/.config/ml4w/settings/filemanager
@@ -134,37 +134,37 @@ echo "/ml4w-minimal;/ml4w-minimal" > ~/.config/ml4w/settings/waybar-theme.sh
 
 
 
-echo "\e[33mInstallation complete! The system will restart in 10 seconds (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+echo -e "\e[33mInstallation complete! The system will restart in 10 seconds (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
 sleep 1
 clear
-echo "\e[33mInstallation complete! The system will restart in 9 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+echo -e "\e[33mInstallation complete! The system will restart in 9 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
 sleep 1
 clear
-echo "\e[33mInstallation complete! The system will restart in 8 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+echo -e "\e[33mInstallation complete! The system will restart in 8 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
 sleep 1
 clear
-echo "\e[33mInstallation complete! The system will restart in 7 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+echo -e "\e[33mInstallation complete! The system will restart in 7 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
 sleep 1
 clear
-echo "\e[33mInstallation complete! The system will restart in 6 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+echo -e "\e[33mInstallation complete! The system will restart in 6 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
 sleep 1
 clear
-echo "\e[33mInstallation complete! The system will restart in 5 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+echo -e "\e[33mInstallation complete! The system will restart in 5 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
 sleep 1
 clear
-echo "\e[33mInstallation complete! The system will restart in 4 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+echo -e "\e[33mInstallation complete! The system will restart in 4 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
 sleep 1
 clear
-echo "\e[33mInstallation complete! The system will restart in 3 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+echo -e "\e[33mInstallation complete! The system will restart in 3 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
 sleep 1
 clear
-echo "\e[33mInstallation complete! The system will restart in 2 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+echo -e "\e[33mInstallation complete! The system will restart in 2 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
 sleep 1
 clear
-echo "\e[33mInstallation complete! The system will restart in 1 second. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+echo -e "\e[33mInstallation complete! The system will restart in 1 second. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
 sleep 1
 clear
-echo "\e[33mInstallation complete! The system will restart in 0 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+echo -e "\e[33mInstallation complete! The system will restart in 0 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
 sleep 1
 clear
 
