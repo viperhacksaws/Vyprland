@@ -1,5 +1,4 @@
-# viperhacksaws-linux
-
+# Vyprland
 (UNFINISHED)
 
 My main setup for Linux, bundled with an installer :3
