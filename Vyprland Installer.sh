@@ -5,7 +5,7 @@ YAY_BASE="librewolf-bin hyprmod breeze adw-gtk-theme gearlever sweet-kde-theme-g
 
 PACMAN_BASE="kitty fastfetch fish cava hyprland nemo btop timeshift"
 
-YAY_FULL="librewolf-bin fluxer-bin video-trimmer tor-browser-bin qbittorrent gnome-boxes proton-mail proton-vpn-gtk-app oh-my-posh nvim quickshell awww rofi pywal waybar cliphist hypridle hyprlock nwg-look qt6ct strawberry-git cava prismlauncher-git dolphin-emu-git virtualbox-bin osu-lazer-bin github-desktop-bin"
+YAY_FULL="librewolf-bin fluxer-bin video-trimmer tor-browser-bin qbittorrent gnome-boxes oh-my-posh nvim quickshell awww rofi pywal waybar cliphist hypridle hyprlock nwg-look qt6ct strawberry-git cava prismlauncher-git dolphin-emu-git virtualbox-bin osu-lazer-bin github-desktop-bin"
 
 PACMAN_FULL="kate obsidian obs-studio libreoffice-fresh celluloid kitty fastfetch fish cava hyprland nemo btop steam timeshift"
 
@@ -102,36 +102,37 @@ sudo pacman -S --noconfirm --needed \
 fi
 
 echo -e "\e[33mInstalling the ML4W dotfiles...\e[0m"
-curl -s https://ml4w.com/os/rolling
+    curl -s https://ml4w.com/os/rolling
 
 echo -e "\e[33mRemoving extra packages...\e[0m"
-sudo pacman -R firefox htop nautilus nwg-dock-hyprland --noconfirm --needed --noprogressbar
+    sudo pacman -R firefox htop nautilus nwg-dock-hyprland --noconfirm --needed --noprogressbar
 
 echo -e "\e[33mDownloading assets and config files...\e[0m"
-git clone https://github.com/viperhacksaws/Vyprland.git
+    git clone https://github.com/viperhacksaws/Vyprland.git
+    cd ./Vyprland
 
-echo -e "\e[33mDeploying configs...\e[0m"
-mv ~/OSX%20Snow%20Leopard%20Wallpaper.jpg ~/OSX\ Snow\ Leopard.jpg
-mv ~/OSX\ Snow\ Leopard.jpg ~/.config/ml4w/wallpapers/OSX\ Snow\ Leopard.jpg
-mv ~/dogicon.png ~/.config/ml4w/assets/dogicon.png
-mv ~/config.jsonc ~/.config/fastfetch/config.jsonc
-mv ~/kitty.conf ~/.config/kitty/kitty.conf
-mv ~/meta.json ~/.config/hypr/hyprmod/profiles/5e59155607ab/meta.json
-mv ~/hyprland-gui.lua ~/.config/hypr/hyprmod/profiles/5e59155607ab/hyprland-gui.lua
-touch ~/.config/hypr/hyprmod/active_profile
+echo -e "\e[33mAdding wallpaers and configuration files...\e[0m"
+    cd ./assets
+    rm -rf ~/.config/ml4w/wallpapers/
+    mv ./wallpapers/ ~/.config/ml4w/wallpapers/
+    cd ..
+    mv ~/dogicon.png ~/.config/ml4w/assets/dogicon.png
+    cd ./.config
+    mv ~/config.jsonc ~/.config/fastfetch/config.jsonc
+    mv ~/kitty.conf ~/.config/kitty/kitty.conf
+    cd ./hypr/
+    rm -rf ~/.config/hypr/hyprmod/
+    mv ./hyprmod ~/.config/hypr/hyprmod/
+    mv ~/.config/hypr/hyprmod/
+    touch ~/.config/hypr/hyprmod/active_profile
 
 echo -e "\e[33mSetting app defaults...\e[0m"
-echo "5e59155607ab" > ~/.config/hypr/hyprmod/active_profile
-sed -i 's/firefox/librewolf/g' ~/.config/ml4w/settings/browser.sh
-sed -i 's/nautilus/nemo/g' ~/.config/ml4w/settings/filemanager
-sed -i 's/nautilus/nemo/g' ~/.config/ml4w/settings/filemanager
-echo "/ml4w-minimal;/ml4w-minimal" > ~/.config/ml4w/settings/waybar-theme.sh
-
-
-# notes for future me
-# figure out how to add all the defaults
-# figure out how to automatically apply the sweet theme to kate and the adw gtk theme
-
+    echo "5e59155607ab" > ~/.config/hypr/hyprmod/active_profile
+    sed -i 's/firefox/librewolf/g' ~/.config/ml4w/settings/browser.sh
+    sed -i 's/nautilus/nemo/g' ~/.config/ml4w/settings/filemanager
+    sed -i 's/nautilus/nemo/g' ~/.config/ml4w/settings/filemanager
+    echo "/ml4w-minimal;/ml4w-minimal" > ~/.config/ml4w/settings/waybar-theme.sh
+    gsettings set org.gnome.desktop.interface gtk-theme adw-gtk-theme
 
 
 echo -e "\e[33mInstallation complete! The system will restart in 10 seconds (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
