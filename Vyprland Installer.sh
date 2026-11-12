@@ -86,7 +86,7 @@ eos-update
 echo -e "\e[33mInstalling AUR packages...\e[0m"
 if [ $INSTALL="BASE" ]; then
 yay -S --noconfirm --needed \
-    $YAY_BASE
+    $YAY_BASE;
 else
 yay -S --noconfirm --needed \
     $YAY_FULL
@@ -95,10 +95,10 @@ fi
 echo -e "\e[33mInstalling pacman packages...\e[0m"
 if [ $INSTALL="BASE" ] then
 sudo pacman -S --noconfirm --needed \
-    $PACMAN_BASE
+    $PACMAN_BASE;
 else
 sudo pacman -S --noconfirm --needed \
-    $PACMAN_FULL
+    $PACMAN_FULL;
 fi
 
 echo -e "\e[33mInstalling the ML4W dotfiles...\e[0m"
