@@ -18,7 +18,7 @@ configs and apps."
 echo "Please select your preferred install below."
 echo ""
 echo -e "\e[34m1) Base install, only essential apps (Librewolf, Libreoffice suite, etc.)\e[0m"
-echo -e "\e[34m2) Full install with all of my apps (Proton Mail + VPN, art tools, etc.)\e[0m"
+echo -e "\e[34m2) Full install with all of my apps (Dolphin emulator, art tools, etc.)\e[0m"
 echo -e "\e[31m3) Exit\e[0m
 "
 read -rp "Select [1-3]: " choice
