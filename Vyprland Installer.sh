@@ -134,6 +134,9 @@ echo -e "\e[33mSetting app defaults...\e[0m"
     echo "/ml4w-minimal;/ml4w-minimal" > ~/.config/ml4w/settings/waybar-theme.sh
     gsettings set org.gnome.desktop.interface gtk-theme adw-gtk-theme
 
+
+trap 'echo -e "\n\e[31mReboot cancelled.\e[0m"; exit 130' INT
+
 for i in {10..0}; do
     clear
     echo -e "\e[33mInstallation complete! The system will restart in $i seconds (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
