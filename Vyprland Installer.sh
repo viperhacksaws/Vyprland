@@ -86,19 +86,19 @@ eos-update
 echo -e "\e[33mInstalling AUR packages...\e[0m"
 if [ $INSTALL="BASE" ]; then
 yay -S --noconfirm --needed \
-    $YAY_BASE;
+    $YAY_BASE
 else
 yay -S --noconfirm --needed \
     $YAY_FULL
 fi
 
 echo -e "\e[33mInstalling pacman packages...\e[0m"
-if [ $INSTALL="BASE" ] then
+if [ $INSTALL="BASE" ]; then
 sudo pacman -S --noconfirm --needed \
-    $PACMAN_BASE;
+    $PACMAN_BASE
 else
 sudo pacman -S --noconfirm --needed \
-    $PACMAN_FULL;
+    $PACMAN_FULL
 fi
 
 echo -e "\e[33mInstalling the ML4W dotfiles...\e[0m"
@@ -134,38 +134,10 @@ echo -e "\e[33mSetting app defaults...\e[0m"
     echo "/ml4w-minimal;/ml4w-minimal" > ~/.config/ml4w/settings/waybar-theme.sh
     gsettings set org.gnome.desktop.interface gtk-theme adw-gtk-theme
 
+for i in {10..0}; do
+    clear
+    echo -e "\e[33mInstallation complete! The system will restart in $i seconds (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
+    sleep 1
+done
 
-echo -e "\e[33mInstallation complete! The system will restart in 10 seconds (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
-sleep 1
-clear
-echo -e "\e[33mInstallation complete! The system will restart in 9 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
-sleep 1
-clear
-echo -e "\e[33mInstallation complete! The system will restart in 8 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
-sleep 1
-clear
-echo -e "\e[33mInstallation complete! The system will restart in 7 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
-sleep 1
-clear
-echo -e "\e[33mInstallation complete! The system will restart in 6 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
-sleep 1
-clear
-echo -e "\e[33mInstallation complete! The system will restart in 5 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
-sleep 1
-clear
-echo -e "\e[33mInstallation complete! The system will restart in 4 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
-sleep 1
-clear
-echo -e "\e[33mInstallation complete! The system will restart in 3 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
-sleep 1
-clear
-echo -e "\e[33mInstallation complete! The system will restart in 2 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
-sleep 1
-clear
-echo -e "\e[33mInstallation complete! The system will restart in 1 second. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
-sleep 1
-clear
-echo -e "\e[33mInstallation complete! The system will restart in 0 seconds. (CTRL + C to cancel.) Switch to Hyprland from the login screen to boot into the new environment.\e[0m"
-sleep 1
-clear
-
+systemctl reboot
